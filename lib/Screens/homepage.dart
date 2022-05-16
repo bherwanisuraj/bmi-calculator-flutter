@@ -16,6 +16,7 @@ enum Gender { noGender, male, female }
 class _MyHomePageState extends State<MyHomePage> {
   Color activeTileColor = ktileColor;
   Gender selectedGender = Gender.noGender;
+  double height = 180.0;
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       colour: selectedGender == Gender.female
                           ? activeTileColor = kaccentColor
                           : activeTileColor = ktileColor,
-                      tileContent:
-                          TileContent(icon: Icons.female, label: "FEMALE"),
+                      tileContent: const TileContent(
+                          icon: Icons.female, label: "FEMALE"),
                     ),
                   ),
                 )
@@ -70,7 +71,46 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
               child: Tiles(
                 colour: ktileColor,
-                tileContent: TileContentTwo(label: "HEIGHT"),
+                tileContent: TileContentTwo(
+                  sliderWidget: SliderTheme(
+                    data: const SliderThemeData(
+                      thumbColor: kaccentColor,
+                      overlayColor: kaccentColorOverlay,
+                      activeTrackColor: kaccentColor,
+                      thumbShape:
+                          RoundSliderThumbShape(enabledThumbRadius: 16.0),
+                      overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 25.0),
+                    ),
+                    child: Slider(
+                      value: height,
+                      min: 120.0,
+                      max: 220.0,
+                      onChanged: (double newValue) {
+                        setState(() {
+                          height = newValue.round().toDouble();
+                        });
+                      },
+                    ),
+                  ),
+                  label: "HEIGHT",
+                  tileContent: [
+                    Text(
+                      height.round().toString(),
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 60.0,
+                          fontWeight: FontWeight.w900),
+                    ),
+                    SizedBox(width: 5.0),
+                    const Text(
+                      "cm",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -79,13 +119,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Tiles(
                     colour: ktileColor,
-                    tileContent: TileContentTwo(label: "HEIGHT"),
+                    tileContent: Container(),
                   ),
                 ),
                 Expanded(
                   child: Tiles(
                     colour: ktileColor,
-                    tileContent: TileContent(icon: Icons.male, label: "MALE"),
+                    tileContent: Container(),
                   ),
                 ),
               ],
