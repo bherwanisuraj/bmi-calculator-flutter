@@ -105,10 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   tileContent: [
                     Text(
                       height.round().toString(),
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 60.0,
-                          fontWeight: FontWeight.w900),
+                      style: kNumber,
                     ),
                     SizedBox(width: 5.0),
                     const Text(
@@ -131,19 +128,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       tileThreeContent: [
                         Text(
                           "WEIGHT",
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
+                          style: klabel,
                         ),
                         const SizedBox(
                           height: 20.0,
                         ),
                         Text(
                           weight.toString(),
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 60.0,
-                              fontWeight: FontWeight.w900),
+                          style: kNumber,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -183,66 +175,62 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Expanded(
-                  child: Tiles(
-                    colour: ktileColor,
-                    tileContent: TileTwo(
-                      tileThreeContent: [
-                        Text(
-                          "AGE",
-                          style: const TextStyle(
-                            color: Colors.white,
+                    child: Tiles(
+                  colour: ktileColor,
+                  tileContent: TileTwo(
+                    tileThreeContent: [
+                      Text(
+                        "AGE",
+                        style: klabel,
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      Text(
+                        age.toString(),
+                        style: kNumber,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                age = decrement(age);
+                              });
+                            },
+                            child: Icon(Icons.remove, color: kappPrimaryColor),
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              shape: CircleBorder(),
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 20.0,
-                        ),
-                        Text(
-                          age.toString(),
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 60.0,
-                              fontWeight: FontWeight.w900),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  age = decrement(age);
-                                });
-                              },
-                              child: Icon(Icons.remove, color: kappPrimaryColor),
-                              style: TextButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                shape: CircleBorder(),
-                              ),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                age = increment(age);
+                              });
+                            },
+                            child: Icon(
+                              Icons.add,
+                              color: kappPrimaryColor,
                             ),
-                            ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  age = increment(age);
-                                });
-                              },
-                              child: Icon(
-                                Icons.add,
-                                color: kappPrimaryColor,
-                              ),
-                              style: TextButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                shape: CircleBorder(),
-                              ),
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              shape: CircleBorder(),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )),
               ],
             )),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, 'calculate');
+              },
               child: Container(
                 child: const Center(
                   child: Text(

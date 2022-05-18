@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/Styling/stylesheet.dart';
 import 'package:flutter/material.dart';
 
 class Tiles extends StatelessWidget {
@@ -69,9 +70,7 @@ class _TileContentTwoState extends State<TileContentTwo> {
       children: [
         Text(
           widget.label,
-          style: const TextStyle(
-            color: Colors.white,
-          ),
+          style: klabel,
         ),
         const SizedBox(
           height: 20.0,
