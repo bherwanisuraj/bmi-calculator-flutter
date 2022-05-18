@@ -86,3 +86,22 @@ class _TileContentTwoState extends State<TileContentTwo> {
     );
   }
 }
+
+class TileTwo extends StatefulWidget {
+  final List<Widget> tileThreeContent;
+
+  TileTwo({required this.tileThreeContent});
+
+  @override
+  State<TileTwo> createState() => _TileTwoState();
+}
+
+class _TileTwoState extends State<TileTwo> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: widget.tileThreeContent,
+    );
+  }
+}

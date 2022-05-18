@@ -17,6 +17,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Color activeTileColor = ktileColor;
   Gender selectedGender = Gender.noGender;
   double height = 180.0;
+  int weight = 20;
+  int age = 18;
+
+  int increment(labelValue) {
+    return labelValue + 1;
+  }
+
+  int decrement(labelValue) {
+    return labelValue - 1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     onTap: () {
                       setState(() {
                         selectedGender = Gender.male;
-                        print('Gender Changed!');
                       });
                     },
                     child: Tiles(
@@ -54,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     onTap: () {
                       setState(() {
                         selectedGender = Gender.female;
-                        print('Gender Changed!');
                       });
                     },
                     child: Tiles(
@@ -119,14 +127,117 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Tiles(
                     colour: ktileColor,
-                    tileContent: Container(),
+                    tileContent: TileTwo(
+                      tileThreeContent: [
+                        Text(
+                          "WEIGHT",
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 60.0,
+                              fontWeight: FontWeight.w900),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  weight = decrement(weight);
+                                });
+                              },
+                              child:
+                                  Icon(Icons.remove, color: kappPrimaryColor),
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                shape: CircleBorder(),
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  weight = increment(weight);
+                                });
+                              },
+                              child: Icon(
+                                Icons.add,
+                                color: kappPrimaryColor,
+                              ),
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                shape: CircleBorder(),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: Tiles(
                     colour: ktileColor,
-                    tileContent: Container(),
-                  ),
+                    tileContent: TileTwo(
+                      tileThreeContent: [
+                        Text(
+                          "AGE",
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 60.0,
+                              fontWeight: FontWeight.w900),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  age = decrement(age);
+                                });
+                              },
+                              child: Icon(Icons.remove, color: kappPrimaryColor),
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                shape: CircleBorder(),
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  age = increment(age);
+                                });
+                              },
+                              child: Icon(
+                                Icons.add,
+                                color: kappPrimaryColor,
+                              ),
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                shape: CircleBorder(),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
                 ),
               ],
             )),
