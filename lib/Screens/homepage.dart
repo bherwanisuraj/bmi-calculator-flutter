@@ -1,5 +1,7 @@
+import 'package:bmi_calculator/Screens/results.dart';
 import 'package:bmi_calculator/Styling/stylesheet.dart';
 import 'package:bmi_calculator/Widgets/tiles.dart';
+import 'package:bmi_calculator/function/bmibrain.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -229,7 +231,19 @@ class _MyHomePageState extends State<MyHomePage> {
             )),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, 'calculate');
+                BmiBrain calc =
+                    BmiBrain(height: height.toInt(), weight: weight);
+                calc.calculateBMI();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Results(
+                      bmi: calc.calculateBMI(),
+                      comments: calc.comments(),
+                      reportLabel: calc.getBmi(),
+                    ),
+                  ),
+                );
               },
               child: Container(
                 child: const Center(

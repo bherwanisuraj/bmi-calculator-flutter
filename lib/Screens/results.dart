@@ -3,7 +3,11 @@ import 'package:bmi_calculator/Widgets/tiles.dart';
 import 'package:flutter/material.dart';
 
 class Results extends StatefulWidget {
-  const Results({Key? key}) : super(key: key);
+  const Results(
+      {required this.reportLabel, required this.bmi, required this.comments});
+
+  final Map<String, Color> reportLabel;
+  final String bmi, comments;
 
   @override
   State<Results> createState() => _ResultsState();
@@ -70,12 +74,14 @@ class _ResultsState extends State<Results> {
                           child: Column(
                             children: [
                               Text(
-                                "NORMAL",
-                                style: klabel,
+                                widget.reportLabel.keys.first,
+                                style: klabelReport(
+                                    colour: widget.reportLabel[
+                                        widget.reportLabel.keys.first]!),
                               ),
                               SizedBox(height: 30.0),
                               Text(
-                                "22.0",
+                                widget.bmi,
                                 style: kNumberBig,
                               ),
                               SizedBox(height: 30.0),
@@ -91,7 +97,7 @@ class _ResultsState extends State<Results> {
                               SizedBox(height: 30.0),
                               Center(
                                 child: Text(
-                                  "You have a normal Body Weight. Good Job!",
+                                  widget.comments,
                                   style: klabelText2,
                                   textAlign: TextAlign.center,
                                 ),

@@ -10,7 +10,7 @@ const klabel = TextStyle(color: Colors.white);
 const klabelText = TextStyle(color: Colors.blueGrey, fontSize: 20.0);
 const klabelText2 = TextStyle(color: Colors.white, fontSize: 20.0, height: 1.2);
 
-TextStyle klabelReport(Color colour) {
+TextStyle klabelReport({Color colour = Colors.white}) {
   return TextStyle(color: colour, fontSize: 23.0);
 }
 
